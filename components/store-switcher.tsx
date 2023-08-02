@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown, PlusCircle, Store } from "lucide-react"
+import { Check, ChevronsUpDown, PlusCircle, Store, StoreIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -38,8 +38,8 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
     value: item.id
   }));
 
-  // Remove commentout later
-  // const currentStore = formattedItems.find((item) => item.value === params.storeId);
+
+  const currentStore = formattedItems.find((item) => item.value === params.storeId);
 
   const [open, setOpen] = React.useState(false)
 
@@ -60,8 +60,8 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
           className={cn("w-[200px] justify-between", className)}
         >
           <Store className="mr-2 h-4 w-4" />
-          {/* Remove commentout later */}
-          {/* {currentStore?.label} */}
+        
+          {currentStore?.label}
           <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -77,17 +77,17 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
                   onSelect={() => onStoreSelect(store)}
                   className="text-sm"
                 >
-                  <Store className="mr-2 h-4 w-4" />
+                  <StoreIcon className="mr-2 h-4 w-4" />
                   {store.label}
-                  {/* Remove commentout later */}
-                  {/* <Check
+        
+                   <Check
                     className={cn(
                       "ml-auto h-4 w-4",
                       currentStore?.value === store.value
                         ? "opacity-100"
                         : "opacity-0"
                     )}
-                  /> */}
+                  />
                 </CommandItem>
               ))}
             </CommandGroup>

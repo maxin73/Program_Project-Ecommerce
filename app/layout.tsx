@@ -6,6 +6,7 @@ import { ToastProvider } from '@/providers/toast-provider'
 
 import './globals.css'
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -18,12 +19,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <ModalProvider />
           <ToastProvider />
+          <ModalProvider />
           {children}
           </body>
       </html>

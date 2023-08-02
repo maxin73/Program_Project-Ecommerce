@@ -2,8 +2,7 @@ import { redirect } from 'next/navigation';
 import { auth } from '@clerk/nextjs';
 
 import Navbar from '@/components/navbar'
-// Remove commentout later
-// import prismadb from '@/lib/prismadb';
+import prismadb from '@/lib/prismadb';
 
 export default async function DashboardLayout({
   children,
@@ -18,21 +17,21 @@ export default async function DashboardLayout({
     redirect('/sign-in');
   }
 
-  // Remove commentout later
-  // const store = await prismadb.store.findFirst({ 
-  //   where: {
-  //     id: params.storeId,
-  //     userId,
-  //   }
-  // });
+ 
+  const store = await prismadb.store.findFirst({ 
+    where: {
+      id: params.storeId,
+      userId,
+    }
+  });
 
-  // if (!store) {
-  //   redirect('/');
-  // };
+  if (!store) {
+    redirect('/');
+  };
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       {children}
     </>
   );

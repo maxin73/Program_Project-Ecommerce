@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 import StoreSwitcher from "@/components/store-switcher";
 import { MainNav } from "@/components/main-nav";
 // import { ThemeToggle } from "@/components/theme-toggle";
-// Remove commentout later
-// import prismadb from "@/lib/prismadb";
+
+import prismadb from "@/lib/prismadb";
 
 const Navbar = async () => {
   const { userId } = auth();
@@ -14,18 +14,18 @@ const Navbar = async () => {
     redirect('/sign-in');
   }
 
-  // Remove commentout later
-  // const stores = await prismadb.store.findMany({
-  //   where: {
-  //     userId,
-  //   }
-  // });
+  
+  const stores = await prismadb.store.findMany({
+    where: {
+      userId,
+    }
+  });
 
   return ( 
     <div className="border-b">
       <div className="flex h-16 items-center px-4">
-        {/* Remove commentout later */}
-        {/* <StoreSwitcher items={stores} /> */}
+    
+        <StoreSwitcher items={stores} />
         <MainNav className="mx-6" />
         <div className="ml-auto flex items-center space-x-4">
           {/* <ThemeToggle /> */}

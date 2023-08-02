@@ -31,19 +31,19 @@ export const StoreModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    // try {
-    //   setLoading(true);
-    //   const response = await axios.post('/api/stores', values);
-    //   console.log(response.data);
-    //   // Remove commentout later
-    //   // window.location.assign(`/${response.data.id}`)
-    //   toast.success("Store created.");
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error('Something went wrong');
-    // } finally {
-    //   setLoading(false);
-    // }
+    try {
+      setLoading(true);
+      const response = await axios.post('/api/stores', values);
+      console.log(response.data);
+
+      window.location.assign(`/${response.data.id}`)
+      // toast.success("Store created.");
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -9,16 +9,23 @@ export function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
+  const pathname = usePathname();
+  const params = useParams();
 
-  // Backend setting
+  const routes = [
+    {
+      href: `/${params.storeId}/settings`,
+      label: 'Settings',
+      active: pathname === `/${params.storeId}/settings`,
+    },
+  ];
 
   return (
     <nav
     className={cn("flex items-center space-x-4 lg:space-x-6", className)}
     {...props}
   >
-    {/* Remove commentout later */}
-    {/* {routes.map((route) => (
+    {routes.map((route) => (
       <Link
         key={route.href}
         href={route.href}
@@ -29,7 +36,7 @@ export function MainNav({
       >
         {route.label}
     </Link>
-    ))} */}
+    ))}
   </nav>
   )
 };

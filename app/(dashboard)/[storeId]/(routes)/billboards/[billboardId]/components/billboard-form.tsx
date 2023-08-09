@@ -139,7 +139,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Background Image</FormLabel>
+                  <FormLabel>Label</FormLabel>
                   <FormControl>
                     <Input disabled={loading} placeholder="Billboard label" {...field} />
                   </FormControl>
